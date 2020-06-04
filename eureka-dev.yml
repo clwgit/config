@@ -1,0 +1,33 @@
+#服务端口号
+server:
+  port: "8761"
+#服务名称
+spring:
+  application:
+    name: "eureka"
+
+#eureka自我保护模式
+#eureka.server.enableSelfPreservation=false
+
+eureka:
+  instance:
+    appname: "localhost"
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    #是否需要向服务端进行注册,如果只获取不注册，设置为false
+    register-with-eureka: "false"
+    #是否需要从服务端获取注册信息,服务端如果是集群需要配置为true
+    fetch-registry: "false"
+  server:
+    #阈值因子，默认是0.85，如果阈值比最小值大，则自我保护模式开启
+    renewal-percent-threshold: "0.49"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: 'always'

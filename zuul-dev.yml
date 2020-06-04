@@ -1,0 +1,27 @@
+server:
+  port: "8080"
+zuul:
+  routes:
+    consumer:
+      path: "/consumer/**"
+      service-id: "consumer"
+
+spring:
+  application:
+    name: "zuul"
+
+eureka:
+  instance:
+    appname: "zuul"
+  client:
+    service-url:
+      defaultZone: "http://localhost:8761/eureka/"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: "always"

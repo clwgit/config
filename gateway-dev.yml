@@ -1,0 +1,30 @@
+server:
+  port: "80"
+
+spring:
+  application:
+    name: "gateway"
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          #启用默认配置通过服务名称
+          enabled: "true"
+          #启用eureka小写访问
+          lower-case-service-id: "true"
+
+eureka:
+  instance:
+    appname: "gateway"
+  client:
+    service-url:
+      defaultZone: "http://localhost:8761/eureka/"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: "always"

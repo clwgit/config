@@ -1,0 +1,17 @@
+server:
+  port: "8769"
+spring:
+  application:
+    name: "admin"
+eureka:
+  instance:
+    appname: "admin"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: "always"
